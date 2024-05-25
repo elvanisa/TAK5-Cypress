@@ -1,0 +1,22 @@
+{
+  "name": "tak5-cypress",
+  "version": "1.0.0",
+  "description": "Test Aplikasi Kamu Batch 5 - Cypress Automation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elvanisa/TAK5-Cypress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elvanisa/TAK5-Cypress/issues"
+  },
+  "homepage": "https://github.com/elvanisa/TAK5-Cypress#readme",
+  "devDependencies": {
+    "cypress": "^13.10.0"
+  }
+}
