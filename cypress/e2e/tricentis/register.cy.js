@@ -1,25 +1,27 @@
+import registerPage from "../../support/pageObject/tricentis/registerPage"
+
 describe('Verify Register Functionality', () => {
   beforeEach(() => {
     cy.visit('/register')
   })
   it('Failed Regist - Min Pass Char', () => {
-    cy.get('#gender-male').check()
-    cy.get('#FirstName').type('elvanisa')
-    cy.get('[name="LastName"]').type('muhsina')
-    cy.get('#Email').type('elva@gmail.com')
-    cy.get('#Password').type('123')
-    cy.get('#ConfirmPassword').type('123')
-    cy.get(':nth-child(1) > .field-validation-error > span').should('contain.text','should have at least 6 characters')
+    cy.get(registerPage.gender).check()
+    cy.get(registerPage.firstName).type('elvanisa')
+    cy.get(registerPage.lastname).type('muhsina')
+    cy.get(registerPage.email).type('elva@gmail.com')
+    cy.get(registerPage.pass).type('123')
+    cy.get(registerPage.confirm).type('123')
+    cy.get(registerPage.errorMsg).should('contain.text','should have at least 6 characters')
   })
   it('Failed Regist - Unmatch Pass', () => {
-    cy.get('#gender-male').check()
-    cy.get('#FirstName').type('elvanisa')
-    cy.get('[name="LastName"]').type('muhsina')
-    cy.get('#Email').type('elva@gmail.com')
+    registerPage.chooseGender()
+    registerPage.inputFirstName('elvanisa')
+    registerPage.inputLastName('muhsina')
+    registerPage.inputEmail('elva@gmail.com')
     cy.get('#Password').type('123456789')
     cy.get('#ConfirmPassword').type('987654321')
     cy.get('#register-button').click()
-    cy.get('.field-validation-error > span').should('contain.text','password do not match')
+    registerPage.verifyText('password do not match')
   })
   it('Failed Regist - Email Invalid', () => {
     cy.get('#gender-male').check()
@@ -30,7 +32,7 @@ describe('Verify Register Functionality', () => {
     cy.get(':nth-child(4) > .field-validation-error > span').should('contain.text','Wrong email')
     cy.get(':nth-child(1) > .field-validation-error > span').should('contain.text','Password is required')
   })
-  it.only('Failed Regist - Custom Command', () => {
+  it('Failed Regist - Custom Command', () => {
     cy.get('#gender-male').check()
     cy.ketik('#FirstName','elvanisa')
     cy.ketik('[name="LastName"]','muhsina')

@@ -1,3 +1,5 @@
+import productPage from "../../support/pageObject/tricentis/productPage"
+
 describe('Verify Register Functionality', () => {
     beforeEach(() => {
       cy.visit('')
@@ -8,13 +10,13 @@ describe('Verify Register Functionality', () => {
     })
     it('Search Feature 1', () => {
       //const product = 'computer'
-      cy.get('#small-searchterms').type(Cypress.env('product1'))
-      cy.get('form > .button-1').click()
+      cy.get(productPage.searchField).type(Cypress.env('product1'))
+      cy.get(productPage.searchBtn).click()
       cy.url().should('include',Cypress.env('product1'))
     })
     it('Search Feature 2', () => {
-      cy.get('#small-searchterms').type(Cypress.env('product2'))
-      cy.get('form > .button-1').click()
+      cy.get(productPage.searchField).type(Cypress.env('product2'))
+      cy.get(productPage.searchBtn).click()
       cy.url().should('include',Cypress.env('product2'))
     })
     it('Search Feature Custom Command', () => {
