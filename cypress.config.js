@@ -5,7 +5,8 @@ module.exports = defineConfig({
     baseUrl: 'https://demowebshop.tricentis.com',
     env: {
       product1: 'computer',
-      product2: 'bag'
+      product2: 'bag',
+      product3: 'Hat'
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here

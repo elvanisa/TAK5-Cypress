@@ -11,6 +11,19 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
+
+Cypress.Commands.add('cariBarang', (x) => {
+    cy.get('#small-searchterms').type(x)
+    cy.get('form > .button-1').click()
+    cy.url().should('include',x)
+})
+
+Cypress.Commands.add('ketik', (locator,value) => {
+    cy.get(locator)
+    .should('be.visible')
+    .type(value)
+})
+
 //
 //
 // -- This is a child command --
