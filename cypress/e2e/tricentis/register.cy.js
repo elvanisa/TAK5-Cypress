@@ -1,6 +1,6 @@
 describe('Verify Register Functionality', () => {
   beforeEach(() => {
-    cy.visit('https://demowebshop.tricentis.com/register')
+    cy.visit('/register')
   })
   it('Failed Regist - Min Pass Char', () => {
     cy.get('#gender-male').check()
