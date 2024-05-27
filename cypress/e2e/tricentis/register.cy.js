@@ -21,7 +21,7 @@ describe('Verify Register Functionality', () => {
     cy.get('#Password').type('123456789')
     cy.get('#ConfirmPassword').type('987654321')
     cy.get('#register-button').click()
-    registerPage.verifyText('password do not match')
+    registerPage.verifyText(registerPage.matchMsg,'password do not match')
   })
   it('Failed Regist - Email Invalid', () => {
     cy.get('#gender-male').check()
@@ -39,5 +39,18 @@ describe('Verify Register Functionality', () => {
     cy.ketik('#Email','elva@mail.com')
     cy.get('#register-button').click()
     cy.get(':nth-child(1) > .field-validation-error > span').should('contain.text','Password is required')
+  })
+  it('Failed Regist - Fixtures', () => {
+    cy.fixture('register').then((x) => {
+      let regis = x
+      cy.get('#gender-male').check()
+      cy.ketik('#FirstName',regis.firstname)
+      cy.ketik('[name="LastName"]',regis.lastname)
+      cy.ketik('#Email',regis.email)
+      cy.ketik(registerPage.pass,regis.pass)
+      cy.ketik(registerPage.confirm,regis.confirmpassword) //kombinasi
+      cy.get('#register-button').click()
+      registerPage.verifyText(registerPage.summaryMsg,regis.existMessage)
+    })
   })
 })

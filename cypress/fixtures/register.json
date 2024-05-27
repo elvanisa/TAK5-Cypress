@@ -1,0 +1,9 @@
+{
+    "firstname": "dicky",
+    "lastname": "rachman",
+    "email": "dicky@mail.com",
+    "pass": "1234567",
+    "confirmpassword": "1234567",
+    "matchMessage" : "password do not match",
+    "existMessage": "The specified email already exists"
+}

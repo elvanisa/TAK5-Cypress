@@ -6,6 +6,8 @@ class registerPage{
     pass = '#Password'
     confirm = '#ConfirmPassword'
     errorMsg = ':nth-child(1) > .field-validation-error > span'
+    matchMsg = '.field-validation-error > span'
+    summaryMsg = '.validation-summary-errors > ul > li'
 
     chooseGender(){
         cy.get(this.gender).check()
@@ -20,8 +22,8 @@ class registerPage{
     inputEmail(value){
         cy.get(this.email).should('be.visible').type(value)
     }
-    verifyText(text){
-        cy.get(this.errorMsg).should('contain.text',text)
+    verifyText(msg,text){
+        cy.get(msg).should('contain.text',text)
     }
 }
 export default new registerPage()
